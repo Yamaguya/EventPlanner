@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Events{% endblock %}
+
+{% block content %}
+<h2>Events</h2>
+<form method="POST" action="{{ url_for('events') }}">
+    <label for="date">Date (YYYY-MM-DD):</label>
+    <input type="text" id="date" name="date" required>
+    <label for="event">Event Description:</label>
+    <input type="text" id="event" name="event" required>
+    <button type="submit">Add Event</button>
+</form>
+
+<ul>
+    {% for event in events %}
+    <li>{{ event.date }}: {{ event.description }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
